@@ -7,7 +7,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="canvas-container"></div>
+    <div id="app">
+        <div id="canvas-container" aria-label="3D scene"></div>
+
+        <aside class="hud" aria-label="Dashboard">
+            <header class="hud__header">
+                <div class="hud__title">Satellite Tracker</div>
+                <div class="hud__subtitle">3D Earth + live satellite positions</div>
+            </header>
+
+            <section class="hud__section">
+                <label class="field">
+                    <span class="field__label">API endpoint</span>
+                    <input id="api-url" class="field__input" type="url" spellcheck="false" autocomplete="off"
+                        placeholder="http://localhost:8000/satellites" />
+                </label>
+
+                <div class="hud__row">
+                    <button id="btn-refresh" class="btn btn--primary" type="button">Refresh</button>
+                    <button id="btn-reset" class="btn" type="button" title="Reset camera">Reset view</button>
+                </div>
+
+                <label class="toggle">
+                    <input id="toggle-autorotate" type="checkbox" checked />
+                    <span>Auto-rotate</span>
+                </label>
+            </section>
+
+            <section class="hud__section hud__stats" aria-live="polite">
+                <div class="stat">
+                    <div class="stat__label">Status</div>
+                    <div id="status" class="stat__value">Idle</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__label">Satellites</div>
+                    <div id="sat-count" class="stat__value">—</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__label">Last updated</div>
+                    <div id="last-updated" class="stat__value">—</div>
+                </div>
+            </section>
+
+            <footer class="hud__footer">
+                <div class="hint">Drag to rotate • Scroll to zoom</div>
+                <div class="hint hint--muted">Tip: If the API is unreachable, you’ll still see a procedural Earth.</div>
+            </footer>
+        </aside>
+
+        <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>

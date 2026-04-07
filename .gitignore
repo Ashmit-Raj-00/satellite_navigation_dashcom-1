@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+
+.venv/
+venv/
+ENV/
+env/
+
+.codex
+frontend/.codex
+
+.DS_Store
+Thumbs.db
+
