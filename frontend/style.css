@@ -92,6 +92,11 @@ body {
     gap: 10px;
 }
 
+.hud__row--live {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
 .hud__footer {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 10px;
@@ -126,6 +131,31 @@ body {
     color: var(--text);
     outline: none;
 }
+
+.field__input--compact {
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.field--inline {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.field__select {
+    padding: 10px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--text);
+    outline: none;
+    appearance: none;
+}
+
+.field__select:focus { border-color: rgba(124, 92, 255, 0.60); box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.18); }
 
 .field__input::placeholder { color: rgba(255, 255, 255, 0.40); }
 .field__input:focus { border-color: rgba(124, 92, 255, 0.60); box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.18); }
@@ -163,6 +193,16 @@ body {
     height: 18px;
 }
 
+.toggle--compact {
+    font-size: 12px;
+    gap: 8px;
+}
+
+.toggle--compact input {
+    width: 16px;
+    height: 16px;
+}
+
 .stat {
     padding: 10px 10px;
     border-radius: 12px;
@@ -181,6 +221,105 @@ body {
     font-size: 13px;
     color: var(--text);
     word-break: break-word;
+}
+
+.hud__satinfo {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 10px;
+}
+
+.satinfo__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.satinfo__title {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.satinfo__name {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+.satinfo__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.satinfo__item {
+    padding: 10px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.20);
+}
+
+.satinfo__label {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.satinfo__value {
+    margin-top: 6px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.satinfo__value--muted {
+    color: rgba(255, 255, 255, 0.70);
+    font-weight: 500;
+}
+
+.btn--small {
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.hud__layers {
+    display: grid;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.14);
+}
+
+.hud__layers-row {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.hud__layers-row--wide {
+    grid-template-columns: 1fr auto auto;
+}
+
+.slider {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-items: start;
+}
+
+.slider__label {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.slider__input {
+    width: 100%;
+    accent-color: rgba(124, 92, 255, 0.9);
 }
 
 .toast {
@@ -218,4 +357,11 @@ body {
         width: auto;
     }
     .toast { right: 12px; bottom: calc(12px + 290px); }
+
+    .hud__layers-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    .hud__layers-row--wide {
+        grid-template-columns: 1fr;
+    }
 }

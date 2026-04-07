@@ -15,10 +15,21 @@ app.add_middleware(
 )
 
 @app.get("/satellites")
-def fetch_satellites(refresh: bool = Query(False, description="Force-refresh TLE cache from CelesTrak")):
+def fetch_satellites(
+    refresh: bool = Query(False, description="Force-refresh TLE cache from CelesTrak"),
+    group: str = Query(
+        "stations",
+        description='CelesTrak group (e.g. "stations", "active", "weather", "gps-ops")',
+    ),
+    limit: int | None = Query(
+        None,
+        gt=0,
+        description="Optional max satellites returned (useful for very large groups).",
+    ),
+):
     """API endpoint to get real-time satellite positions."""
     try:
-        positions = get_satellite_positions(force_refresh=refresh)
+        positions = get_satellite_positions(group=group, force_refresh=refresh, limit=limit)
     except requests.RequestException as exc:
         raise HTTPException(status_code=502, detail=f"Failed to fetch TLE data: {exc}") from exc
     except Exception as exc:
